@@ -1,0 +1,95 @@
+:root {
+  --bg-primary: #f3f0f5;
+  /* Light background from the second image */
+  --bg-secondary: #ffffff;
+  /* White for cards */
+  --bg-dark: #1a1a1a;
+  /* Dark background for hero */
+  --accent-yellow: #ffcc00;
+  /* Yellow for highlights */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #ffffff;
+
+  --sidebar-width-left: 300px;
+  --sidebar-width-right: 80px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  /* Prevent body scroll, handle in App */
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.center-content>div {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.center-content>div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.center-content>div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.center-content>div:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.center-content>div:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.center-content>div:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--accent-yellow), #ff6b6b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
