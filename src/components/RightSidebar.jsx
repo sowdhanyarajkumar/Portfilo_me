@@ -5,20 +5,20 @@ const NavIcon = ({ icon: Icon, isActive, onClick }) => (
     <div
         onClick={onClick}
         style={{
-            width: '40px',
-            height: '40px',
+            width: '45px',
+            height: '45px',
             borderRadius: '50%',
-            backgroundColor: isActive ? 'var(--accent-yellow)' : '#e8e6ea',
+            backgroundColor: isActive ? 'var(--accent-yellow)' : '#f0f0f6',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '1.5rem',
+            marginBottom: '2rem',
             cursor: 'pointer',
             transition: 'all 0.3s ease',
-            transform: isActive ? 'scale(1.1)' : 'scale(1)'
+            boxShadow: isActive ? '0 4px 10px rgba(255, 180, 0, 0.3)' : 'none'
         }}
     >
-        <Icon size={20} color="#333" />
+        <Icon size={20} color={isActive ? '#333' : '#777'} />
     </div>
 );
 
@@ -44,24 +44,7 @@ const RightSidebar = () => {
             paddingTop: '4rem',
             borderLeft: '1px solid #eee'
         }}>
-            <div
-                onClick={() => scrollToSection('hero')}
-                style={{
-                    width: '50px',
-                    height: '50px',
-                    borderRadius: '50%',
-                    backgroundColor: activeTab === 'hero' ? 'var(--accent-yellow)' : '#e8e6ea',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginBottom: '2rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                }}
-            >
-                <FaHome size={24} />
-            </div>
-
+            <NavIcon icon={FaHome} isActive={activeTab === 'home'} onClick={() => scrollToSection('home')} />
             <NavIcon icon={FaCode} isActive={activeTab === 'projects'} onClick={() => scrollToSection('projects')} />
             <NavIcon icon={FaBook} isActive={activeTab === 'education'} onClick={() => scrollToSection('education')} />
             <NavIcon icon={FaBriefcase} isActive={activeTab === 'work'} onClick={() => scrollToSection('work')} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaBriefcase } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const WorkItem = ({ title, subtitle }) => (
     <div style={{
@@ -15,13 +16,20 @@ const WorkItem = ({ title, subtitle }) => (
 
 const Work = () => {
     return (
-        <div style={{
-            backgroundColor: '#f3f0f5',
-            padding: '2rem',
-            borderRadius: '20px',
-            marginBottom: '2rem',
-            border: '2px solid #3b82f6' /* Blue border as seen in image */
-        }}>
+        <motion.div
+            id="work"
+            style={{
+                backgroundColor: '#f3f0f5',
+                padding: '2rem',
+                borderRadius: '20px',
+                marginBottom: '2rem',
+                border: '2px solid #3b82f6' /* Blue border as seen in image */
+            }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+        >
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
                 <h2 style={{ textAlign: 'center' }}>work</h2>
                 <FaBriefcase size={24} />
@@ -35,7 +43,7 @@ const Work = () => {
                 title="worked As AI/ML Architect"
                 subtitle="In - Tautology build a agentic Ai Agents"
             />
-        </div>
+        </motion.div>
     );
 };
 

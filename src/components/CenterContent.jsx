@@ -4,21 +4,23 @@ import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Education from './sections/Education';
 import Work from './sections/Work';
+import Contact from './sections/Contact';
 
 const CenterContent = () => {
     return (
         <div className="center-content" style={{
             flex: 1,
+            height: '100%',
             overflowY: 'auto',
             padding: '2rem',
-            height: '100%',
-            scrollBehavior: 'smooth'
+            backgroundColor: 'var(--bg-primary)'
         }}>
-            <div id="hero"><Hero /></div>
-            <div id="skills"><Skills /></div>
-            <div id="projects"><Projects /></div>
-            <div id="education"><Education /></div>
-            <div id="work"><Work /></div>
+            <Hero />
+            <Skills />
+            <Projects />
+            <Education />
+            <Work />
+            <Contact />
         </div>
     );
 };

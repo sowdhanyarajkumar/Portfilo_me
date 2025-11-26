@@ -3,9 +3,9 @@
   /* Light background from the second image */
   --bg-secondary: #ffffff;
   /* White for cards */
-  --bg-dark: #1a1a1a;
+  --bg-dark: #2B2B2B;
   /* Dark background for hero */
-  --accent-yellow: #ffcc00;
+  --accent-yellow: #FFB400;
   /* Yellow for highlights */
   --text-primary: #333333;
   --text-secondary: #666666;
@@ -92,4 +92,47 @@ body {
 .project-card:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Hero Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  /* Bouncy effect */
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #fff9c4 0%, #fbc02d 100%);
+  /* Lighter yellow to deeper yellow */
 }

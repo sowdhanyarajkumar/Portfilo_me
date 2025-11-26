@@ -1,83 +1,99 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SkillBar = ({ name, level, index }) => (
+const SkillBar = ({ skill, percentage, showToggle = true, delay = 0 }) => (
     <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        viewport={{ once: true }}
         style={{ marginBottom: '1rem' }}
+        initial={{ x: -20, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: delay }}
+        viewport={{ once: true }}
     >
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span>{name}</span>
+            <span style={{ fontWeight: '500', fontSize: '0.9rem' }}>{skill}</span>
         </div>
-        <motion.div
-            style={{ width: '100%', height: '10px', backgroundColor: '#e0e0e0', borderRadius: '5px' }}
-            whileHover={{ scale: 1.02 }}
-        >
+        <div style={{ width: '100%', height: '10px', backgroundColor: 'white', borderRadius: '5px', position: 'relative', display: 'flex', alignItems: 'center' }}>
             <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${level}%` }}
-                transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
                 style={{
                     height: '100%',
                     backgroundColor: 'var(--accent-yellow)',
                     borderRadius: '5px',
                     position: 'relative'
                 }}
+                initial={{ width: 0 }}
+                whileInView={{ width: `${percentage}%` }}
+                transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }}
+                viewport={{ once: true }}
             >
-                <motion.div
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: index * 0.2
-                    }}
-                    style={{
-                        position: 'absolute',
-                        right: '-5px',
-                        top: '-3px',
-                        width: '16px',
-                        height: '16px',
-                        backgroundColor: 'white',
-                        borderRadius: '50%',
-                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                    }}
-                ></motion.div>
+                {showToggle && (
+                    <motion.div
+                        style={{
+                            width: '16px',
+                            height: '16px',
+                            backgroundColor: 'white',
+                            borderRadius: '50%',
+                            position: 'absolute',
+                            right: '0',
+                            top: '50%',
+                            transform: 'translate(50%, -50%)',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                        }}
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    ></motion.div>
+                )}
             </motion.div>
-        </motion.div>
+        </div>
     </motion.div>
 );
 
 const Skills = () => {
     return (
-        <div style={{
+        <div id="skills" style={{
             backgroundColor: '#e8e6ea',
             padding: '2rem',
             borderRadius: '20px',
-            marginBottom: '2rem'
+            marginTop: '2rem',
+            overflow: 'hidden'
         }}>
-            <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                style={{ textAlign: 'center', marginBottom: '2rem' }}
-            >
-                Skill
-            </motion.h2>
+            <h3 style={{ textAlign: 'center', marginBottom: '2rem', fontWeight: 'bold' }}>Skill</h3>
+
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                 <div>
-                    <SkillBar name="HTML" level={90} index={0} />
-                    <SkillBar name="CSS" level={85} index={1} />
-                    <SkillBar name="JAVASCRIPT" level={80} index={2} />
-                    <SkillBar name="REACT" level={75} index={3} />
-                    <SkillBar name="MONGO DB" level={70} index={4} />
+                    <SkillBar skill="HTML" percentage={85} delay={0.1} />
+                    <SkillBar skill="CSS" percentage={80} delay={0.2} />
+                    <SkillBar skill="JAVASCRIPT" percentage={70} delay={0.3} />
+                    <SkillBar skill="REACT" percentage={60} delay={0.4} />
+                    <SkillBar skill="MONGO DB" percentage={75} delay={0.5} />
                 </div>
                 <div>
-                    <SkillBar name="AI/ML" level={60} index={5} />
-                    <SkillBar name="AGENTIC AI" level={85} index={6} />
+                    <SkillBar skill="AI/ML" percentage={40} delay={0.6} />
+                    <div style={{ marginBottom: '1rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                            <span style={{ fontWeight: '500', fontSize: '0.9rem' }}>AGENTIC AI</span>
+                        </div>
+                        <div style={{ width: '100%', height: '10px', backgroundColor: 'transparent', borderRadius: '5px', position: 'relative' }}>
+                            <div style={{
+                                width: '100%',
+                                height: '100%',
+                                backgroundColor: 'var(--accent-yellow)',
+                                borderRadius: '5px',
+                                position: 'relative'
+                            }}>
+                                <div style={{
+                                    width: '16px',
+                                    height: '16px',
+                                    backgroundColor: 'white',
+                                    borderRadius: '50%',
+                                    position: 'absolute',
+                                    right: '0',
+                                    top: '50%',
+                                    transform: 'translate(50%, -50%)',
+                                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                                }}></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

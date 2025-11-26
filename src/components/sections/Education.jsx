@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const EducationItem = ({ year, title, subtitle }) => (
     <div style={{ display: 'flex', gap: '2rem', marginBottom: '2rem', position: 'relative' }}>
@@ -24,12 +25,19 @@ const EducationItem = ({ year, title, subtitle }) => (
 
 const Education = () => {
     return (
-        <div style={{
-            backgroundColor: 'white',
-            padding: '2rem',
-            borderRadius: '20px',
-            marginBottom: '2rem'
-        }}>
+        <motion.div
+            id="education"
+            style={{
+                backgroundColor: 'white',
+                padding: '2rem',
+                borderRadius: '20px',
+                marginBottom: '2rem'
+            }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+        >
             <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Education</h2>
             <EducationItem
                 year="2021-2022"
@@ -46,7 +54,7 @@ const Education = () => {
                 title="B.E - computer Science and engineering"
                 subtitle="K.S.R -college of Engineering ,Tiruchengode"
             />
-        </div>
+        </motion.div>
     );
 };
 
