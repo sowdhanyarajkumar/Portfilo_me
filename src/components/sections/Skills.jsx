@@ -20,10 +20,17 @@ const SkillBar = ({ skill, percentage, showToggle = true, delay = 0 }) => (
                     borderRadius: '5px',
                     position: 'relative'
                 }}
-                initial={{ width: 0 }}
-                whileInView={{ width: `${percentage}%` }}
-                transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }}
-                viewport={{ once: true }}
+                initial={{ width: "0%" }}
+                whileInView={{
+                    width: ["0%", "100%", "0%", `${percentage}%`]
+                }}
+                transition={{
+                    duration: 3,
+                    delay: delay,
+                    ease: "easeInOut",
+                    times: [0, 0.4, 0.7, 1]
+                }}
+                viewport={{ once: false }}
             >
                 {showToggle && (
                     <motion.div
@@ -35,10 +42,10 @@ const SkillBar = ({ skill, percentage, showToggle = true, delay = 0 }) => (
                             position: 'absolute',
                             right: '0',
                             top: '50%',
-                            transform: 'translate(50%, -50%)',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
                         }}
-                        animate={{ x: [0, 5, 0] }}
+                        initial={{ x: 8, y: "-50%" }}
+                        animate={{ x: [8, 13, 8] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     ></motion.div>
                 )}
